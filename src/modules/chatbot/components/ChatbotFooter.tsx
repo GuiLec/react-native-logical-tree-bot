@@ -10,6 +10,8 @@ import {Button} from '../../../design-system/components/general/button/Button';
 import {Spacer} from '../../../design-system/components/layout/spacer/Spacer';
 import {Box} from '../../../design-system/components/layout/box/Box';
 import {theme} from '../../../design-system/theme/theme';
+import {Eventuality} from 'src/modules/chatbot/domain/types/ChatBotCase.interface';
+import {getNextCaseIdFromEventualities} from 'src/modules/chatbot/domain/utils/getNextCaseIdFromEventualities';
 
 interface Props {
   answerOptions: string[];
@@ -18,14 +20,14 @@ interface Props {
     nextCaseId: string | null;
   }) => () => void;
   areChoiceButtonsVisible: boolean;
-  nextChatBotCaseId: string | null;
+  nextEventualities: Eventuality[];
 }
 
 export const ChatbotFooter = ({
   answerOptions,
   onChoicePress,
   areChoiceButtonsVisible,
-  nextChatBotCaseId,
+  nextEventualities,
 }: Props) => {
   return (
     <KeyboardAvoidingView
@@ -45,7 +47,10 @@ export const ChatbotFooter = ({
                   <Button
                     onPress={onChoicePress({
                       choice: answerOption,
-                      nextCaseId: nextChatBotCaseId,
+                      nextCaseId: getNextCaseIdFromEventualities({
+                        eventualities: nextEventualities,
+                        choice: answerOption,
+                      }),
                     })}
                     key={index}
                     variant="inverted"

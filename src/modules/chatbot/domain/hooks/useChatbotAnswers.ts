@@ -34,12 +34,12 @@ export const useChatbotAnswers = ({
   );
   const answerOptions = currentChatBotCase?.answerOptions || [];
 
-  const nextChatBotCaseId = currentChatBotCase?.next[0]?.stepId || null;
+  const nextEventualities = currentChatBotCase?.next || [];
 
   return {
     answerOptions,
     onAnswer,
     chatSteps,
-    nextChatBotCaseId,
+    nextEventualities,
   };
 };

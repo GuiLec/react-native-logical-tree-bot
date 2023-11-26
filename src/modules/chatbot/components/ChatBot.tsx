@@ -15,7 +15,7 @@ interface Props {
 }
 
 export const Chatbot = ({chatBotCases, initialStepId}: Props) => {
-  const {answerOptions, onAnswer, chatSteps, nextChatBotCaseId} =
+  const {answerOptions, onAnswer, chatSteps, nextEventualities} =
     useChatbotAnswers({
       chatBotCases,
       initialStepId,
@@ -66,7 +66,7 @@ export const Chatbot = ({chatBotCases, initialStepId}: Props) => {
         areChoiceButtonsVisible={areChoiceButtonsVisible}
         onChoicePress={onChoicePress}
         answerOptions={answerOptions}
-        nextChatBotCaseId={nextChatBotCaseId}
+        nextEventualities={nextEventualities}
       />
     </StyledSafeAreaView>
   );

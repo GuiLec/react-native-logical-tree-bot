@@ -21,7 +21,11 @@ const firstStep: ChatBotCase = {
   answerOptions: firstStepAnswerOptions,
   next: [
     {
+      condition: /Yes/,
       stepId: 'thirdStep',
+    },
+    {
+      stepId: 'secondStep',
     },
   ],
 };
