@@ -29,15 +29,15 @@ export const useChatbotAnswers = ({
     );
   };
 
-  const nextChatBotCase = chatBotCases.find(
+  const currentChatBotCase = chatBotCases.find(
     chatBotCase => chatBotCase.id === chatSteps[chatSteps.length - 1]?.caseId,
   );
-  const nextAnswerOptions = nextChatBotCase?.answerOptions || [];
+  const answerOptions = currentChatBotCase?.answerOptions || [];
 
-  const nextChatBotCaseId = nextChatBotCase?.next.stepId || null;
+  const nextChatBotCaseId = currentChatBotCase?.next.stepId || null;
 
   return {
-    nextAnswerOptions,
+    answerOptions,
     onAnswer,
     chatSteps,
     nextChatBotCaseId,
