@@ -6,15 +6,17 @@ import {useChatbotAnswers} from 'src/modules/chatbot/domain/hooks/useChatbotAnsw
 import {Box} from 'src/design-system/components/layout/box/Box';
 import {Stack} from 'src/design-system/components/layout/stack/Stack';
 import {DialogStep} from 'src/modules/chatbot/components/DialogStep';
-import {chatBotSteps} from 'src/modules/chatbot/domain/chatbot.fixture';
 import {ChatbotFooter} from 'src/modules/chatbot/components/ChatbotFooter';
+import {ChatBotStep} from 'src/modules/chatbot/domain/types/ChatBotStep.interface';
 
-export type ChatbotRouteParams = undefined;
+interface Props {
+  chatBotSteps: ChatBotStep[];
+}
 
-// The whole content of this screen is hard-coded and is only meant for demo purposes.
-
-export const Chatbot = () => {
-  const {nextAnswerOptions, onAnswer, answers} = useChatbotAnswers();
+export const Chatbot = ({chatBotSteps}: Props) => {
+  const {nextAnswerOptions, onAnswer, answers} = useChatbotAnswers({
+    chatBotSteps,
+  });
 
   const [areChoiceButtonsVisible, setAreChoiceButtonsVisible] =
     useState<boolean>(false);
