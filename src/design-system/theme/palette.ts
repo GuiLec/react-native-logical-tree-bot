@@ -1,5 +1,4 @@
 export const palette = {
-  purple100: '#780EFF',
   beige50: '#FFF6F0',
   beige70: '#F0D2BA0',
   beige100: '#FFF6F0',

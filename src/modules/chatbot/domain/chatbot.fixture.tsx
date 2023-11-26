@@ -9,16 +9,11 @@ const firstStepAnswerOptions = [
 
 const firstStep = {
   paragraphs: [
-    <Typography key={0}>
-      <Typography>{'Hi James '}</Typography>
-      {"👋\nIt's almost "}
-      <Typography>{'lunch time'}</Typography>
-      {'!'}
-    </Typography>,
+    <Typography key={0}>{"Hi James 👋\nIt's almost lunch time!"}</Typography>,
     <Typography key={1}>
-      {'May I suggest you a meal you can cook respecting your '}
-      <Typography>{'1800 kcal'}</Typography>
-      {' daily goal?'}
+      {
+        'May I suggest you a meal you can cook respecting your 1800 kcal daily goal?'
+      }
     </Typography>,
   ],
   answerOptions: firstStepAnswerOptions,
@@ -85,8 +80,4 @@ const thirdStep = {
   answerOptions: [],
 };
 
-export const chatBotSteps = {
-  firstStep,
-  secondtStep,
-  thirdStep,
-};
+export const chatBotSteps = [firstStep, secondtStep, thirdStep];

@@ -2,19 +2,21 @@ import {useRef, useState} from 'react';
 import {ScrollView, StyleSheet} from 'react-native';
 import {SafeAreaView} from 'react-native';
 import styled from '@emotion/native';
-import {useChatbotSteps} from 'src/modules/chatbot/domain/hooks/useChatbotSteps';
+import {useChatbotAnswers} from 'src/modules/chatbot/domain/hooks/useChatbotAnswers';
 import {Box} from 'src/design-system/components/layout/box/Box';
 import {Stack} from 'src/design-system/components/layout/stack/Stack';
 import {DialogStep} from 'src/modules/chatbot/components/DialogStep';
-import {chatBotSteps} from 'src/modules/chatbot/domain/chatbot.fixture';
 import {ChatbotFooter} from 'src/modules/chatbot/components/ChatbotFooter';
+import {ChatBotStep} from 'src/modules/chatbot/domain/types/ChatBotStep.interface';
 
-export type ChatbotRouteParams = undefined;
+interface Props {
+  chatBotSteps: ChatBotStep[];
+}
 
-// The whole content of this screen is hard-coded and is only meant for demo purposes.
-
-export const Chatbot = () => {
-  const {steps, answerOptions, setStepChoiceAnswer} = useChatbotSteps();
+export const Chatbot = ({chatBotSteps}: Props) => {
+  const {nextAnswerOptions, onAnswer, answers} = useChatbotAnswers({
+    chatBotSteps,
+  });
 
   const [areChoiceButtonsVisible, setAreChoiceButtonsVisible] =
     useState<boolean>(false);
@@ -23,7 +25,7 @@ export const Chatbot = () => {
   const showChoiceButtons = () => setAreChoiceButtonsVisible(true);
 
   const onChoicePress = (choice: string) => () => {
-    setStepChoiceAnswer(choice);
+    onAnswer(choice);
     hideChoiceButtons();
   };
 
@@ -39,32 +41,24 @@ export const Chatbot = () => {
         contentContainerStyle={styles.contentContainer}>
         <Box padding="$6">
           <Stack gap="$4">
-            <DialogStep
-              showChoiceButtons={showChoiceButtons}
-              paragraphs={chatBotSteps.firstStep.paragraphs}
-              answer={steps['firstStep'].answer}
-            />
-            {steps['firstStep'].answer && (
-              <DialogStep
-                showChoiceButtons={showChoiceButtons}
-                paragraphs={chatBotSteps.secondtStep.paragraphs}
-                answer={steps['secondStep'].answer}
-              />
-            )}
-            {steps['secondStep'].answer && (
-              <DialogStep
-                showChoiceButtons={() => null}
-                paragraphs={chatBotSteps.thirdStep.paragraphs}
-                answer={null}
-              />
-            )}
+            {chatBotSteps.map((step, index) => {
+              if (index > answers.length) return null;
+              return (
+                <DialogStep
+                  key={index}
+                  showChoiceButtons={showChoiceButtons}
+                  paragraphs={step.paragraphs}
+                  answer={answers[index] || null}
+                />
+              );
+            })}
           </Stack>
         </Box>
       </ScrollView>
       <ChatbotFooter
         areChoiceButtonsVisible={areChoiceButtonsVisible}
         onChoicePress={onChoicePress}
-        answerOptions={answerOptions}
+        answerOptions={nextAnswerOptions}
       />
     </StyledSafeAreaView>
   );

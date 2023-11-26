@@ -14,7 +14,7 @@ const disabled = {
 };
 
 const primary = {
-  main: palette.purple100,
+  main: palette.green100,
   light: palette.green70,
   contrastText: palette.white,
   pale: palette.green30,
