@@ -13,14 +13,19 @@ import {theme} from '../../../design-system/theme/theme';
 
 interface Props {
   answerOptions: string[];
-  onChoicePress: (choice: string) => () => void;
+  onChoicePress: (params: {
+    choice: string;
+    nextCaseId: string | null;
+  }) => () => void;
   areChoiceButtonsVisible: boolean;
+  nextChatBotCaseId: string | null;
 }
 
 export const ChatbotFooter = ({
   answerOptions,
   onChoicePress,
   areChoiceButtonsVisible,
+  nextChatBotCaseId,
 }: Props) => {
   return (
     <KeyboardAvoidingView
@@ -38,7 +43,10 @@ export const ChatbotFooter = ({
               <Stack direction="horizontal" gap="$4">
                 {answerOptions.map((answerOption, index) => (
                   <Button
-                    onPress={onChoicePress(answerOption)}
+                    onPress={onChoicePress({
+                      choice: answerOption,
+                      nextCaseId: nextChatBotCaseId,
+                    })}
                     key={index}
                     variant="inverted"
                     size="XS"

@@ -87,7 +87,7 @@ const ThirdStep = () => {
 const thirdStep: ChatBotCase = {
   id: 'thirdStep',
   paragraphs: [<ThirdStep key={0} />],
-  answerOptions: [],
+  answerOptions: ['Hello'],
   next: {
     stepId: 'secondStep',
   },

@@ -9,7 +9,7 @@ export const Demo = () => {
   return (
     <ThemeProvider theme={theme}>
       <StyledSafeAreaView>
-        <Chatbot chatBotCases={chatBotCases} />
+        <Chatbot initialStepId="firstStep" chatBotCases={chatBotCases} />
       </StyledSafeAreaView>
     </ThemeProvider>
   );
