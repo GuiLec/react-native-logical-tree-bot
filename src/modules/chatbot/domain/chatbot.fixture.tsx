@@ -8,7 +8,7 @@ const firstStepAnswerOptions = [
   'I am fine, I already have a meal',
 ];
 
-const firstStep = {
+const firstStep: ChatBotStep = {
   id: 'firstStep',
   paragraphs: [
     <Typography key={0}>{"Hi James 👋\nIt's almost lunch time!"}</Typography>,
@@ -19,6 +19,9 @@ const firstStep = {
     </Typography>,
   ],
   answerOptions: firstStepAnswerOptions,
+  next: {
+    stepId: 'thirdStep',
+  },
 };
 
 const secondStepAnswerOptions = [
@@ -49,7 +52,7 @@ const BulletParagraph = ({text}: {text: string}) => (
   </Box>
 );
 
-const secondtStep = {
+const secondtStep: ChatBotStep = {
   id: 'secondStep',
   paragraphs: [
     <Typography key={0}>
@@ -72,16 +75,22 @@ const secondtStep = {
     <Typography key={3}>{'Does it sound good to you?'}</Typography>,
   ],
   answerOptions: secondStepAnswerOptions,
+  next: {
+    stepId: null,
+  },
 };
 
 const ThirdStep = () => {
   return <Typography key={0}>{"Let's cook !"}</Typography>;
 };
 
-const thirdStep = {
+const thirdStep: ChatBotStep = {
   id: 'thirdStep',
   paragraphs: [<ThirdStep key={0} />],
   answerOptions: [],
+  next: {
+    stepId: 'secondStep',
+  },
 };
 
 export const chatBotSteps: ChatBotStep[] = [firstStep, secondtStep, thirdStep];
