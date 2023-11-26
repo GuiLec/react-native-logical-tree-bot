@@ -5,7 +5,6 @@ import {
   ScrollView,
   StyleSheet,
 } from 'react-native';
-import {spacings} from '../../../design-system/theme/spacings';
 import {Stack} from '../../../design-system/components/layout/stack/Stack';
 import {Button} from '../../../design-system/components/general/button/Button';
 import {Spacer} from '../../../design-system/components/layout/spacer/Spacer';
@@ -26,12 +25,11 @@ export const ChatbotFooter = ({
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
-      <Container
-        // @todo remove the insets.bottom when the keyboard is open
-        bottomOffset={spacings['$2']}
+      <Box
+        paddingBottom="$2"
         backgroundColorKeyPath="primary.veryPale"
         paddingTop="$4">
-        {areChoiceButtonsVisible && (
+        {areChoiceButtonsVisible && answerOptions.length > 0 && (
           <>
             <ScrollView
               horizontal
@@ -57,14 +55,10 @@ export const ChatbotFooter = ({
           <Spacer direction="horizontal" gap="$2" />
           <Button size="XXS" icon="sendHorizontal" />
         </Box>
-      </Container>
+      </Box>
     </KeyboardAvoidingView>
   );
 };
-
-const Container = styled(Box)<{bottomOffset: number}>(({bottomOffset}) => ({
-  paddingBottom: bottomOffset,
-}));
 
 const styles = StyleSheet.create({
   contentContainer: {
