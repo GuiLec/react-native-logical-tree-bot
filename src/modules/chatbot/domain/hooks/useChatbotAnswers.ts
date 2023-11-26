@@ -1,10 +1,7 @@
 import {useState} from 'react';
 import {ChatBotCase} from 'src/modules/chatbot/domain/types/ChatBotCase.interface';
-
-type ChatStep = {
-  caseId: string;
-  answer: string | null;
-};
+import {ChatStep} from 'src/modules/chatbot/domain/types/ChatStep.interface';
+import {getNextChatStepsState} from 'src/modules/chatbot/domain/utils/getNextChatStepsState';
 
 export const useChatbotAnswers = ({
   chatBotCases,
@@ -27,27 +24,9 @@ export const useChatbotAnswers = ({
     choice: string;
     nextCaseId: string | null;
   }) => {
-    setChatSteps(prevAnswers => {
-      const chatStepsWithoutLastOne = prevAnswers.slice(
-        0,
-        prevAnswers.length - 1,
-      );
-      const currentChatSteps = [
-        ...chatStepsWithoutLastOne,
-        {
-          caseId: prevAnswers[prevAnswers.length - 1]?.caseId || '',
-          answer: choice,
-        },
-      ];
-      if (!nextCaseId) return currentChatSteps;
-      return [
-        ...currentChatSteps,
-        {
-          caseId: nextCaseId,
-          answer: null,
-        },
-      ];
-    });
+    setChatSteps(prevAnswers =>
+      getNextChatStepsState({prevAnswers, choice, nextCaseId}),
+    );
   };
 
   const nextChatBotCase = chatBotCases.find(
