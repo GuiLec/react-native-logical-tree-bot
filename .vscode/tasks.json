@@ -14,6 +14,13 @@
       "problemMatcher": ["$tsc-watch"],
       "group": "test",
       "label": "Typecheck - watch"
+    },
+    {
+      "type": "shell",
+      "command": "yarn test:lint",
+      "problemMatcher": ["$eslint-stylish"],
+      "group": "test",
+      "label": "Lint"
     }
   ]
 }
