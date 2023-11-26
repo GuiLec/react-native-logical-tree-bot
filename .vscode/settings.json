@@ -1,0 +1,3 @@
+{
+  "typescript.tsdk": "node_modules/typescript/lib" // Make sure VS Code uses the project's typescript version, not the one bundled with VS Code
+}

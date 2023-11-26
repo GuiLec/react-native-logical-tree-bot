@@ -1,0 +1,19 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "shell",
+      "command": "yarn test:types",
+      "problemMatcher": ["$tsc"],
+      "group": "test",
+      "label": "Typecheck"
+    },
+    {
+      "type": "shell",
+      "command": "yarn test:types --watch",
+      "problemMatcher": ["$tsc-watch"],
+      "group": "test",
+      "label": "Typecheck - watch"
+    }
+  ]
+}
