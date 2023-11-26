@@ -7,15 +7,15 @@ import {Box} from 'src/design-system/components/layout/box/Box';
 import {Stack} from 'src/design-system/components/layout/stack/Stack';
 import {DialogStep} from 'src/modules/chatbot/components/DialogStep';
 import {ChatbotFooter} from 'src/modules/chatbot/components/ChatbotFooter';
-import {ChatBotStep} from 'src/modules/chatbot/domain/types/ChatBotStep.interface';
+import {ChatBotCase} from 'src/modules/chatbot/domain/types/ChatBotCase.interface';
 
 interface Props {
-  chatBotSteps: ChatBotStep[];
+  chatBotCases: ChatBotCase[];
 }
 
-export const Chatbot = ({chatBotSteps}: Props) => {
+export const Chatbot = ({chatBotCases}: Props) => {
   const {nextAnswerOptions, onAnswer, answers} = useChatbotAnswers({
-    chatBotSteps,
+    chatBotCases,
   });
 
   const [areChoiceButtonsVisible, setAreChoiceButtonsVisible] =
@@ -41,7 +41,7 @@ export const Chatbot = ({chatBotSteps}: Props) => {
         contentContainerStyle={styles.contentContainer}>
         <Box padding="$6">
           <Stack gap="$4">
-            {chatBotSteps.map((step, index) => {
+            {chatBotCases.map((step, index) => {
               if (index > answers.length) return null;
               return (
                 <DialogStep

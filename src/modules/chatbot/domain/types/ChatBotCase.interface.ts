@@ -1,4 +1,4 @@
-export interface ChatBotStep {
+export interface ChatBotCase {
   id: string;
   paragraphs: React.JSX.Element[];
   answerOptions: string[];

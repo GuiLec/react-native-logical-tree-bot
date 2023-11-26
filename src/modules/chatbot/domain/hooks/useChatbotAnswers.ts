@@ -1,12 +1,12 @@
 import {useState} from 'react';
-import {ChatBotStep} from 'src/modules/chatbot/domain/types/ChatBotStep.interface';
+import {ChatBotCase} from 'src/modules/chatbot/domain/types/ChatBotCase.interface';
 
 type Answer = string | null;
 
 export const useChatbotAnswers = ({
-  chatBotSteps,
+  chatBotCases,
 }: {
-  chatBotSteps: ChatBotStep[];
+  chatBotCases: ChatBotCase[];
 }) => {
   const [answers, setAnswers] = useState<Answer[]>([]);
 
@@ -14,7 +14,7 @@ export const useChatbotAnswers = ({
     setAnswers(prevAnswers => [...prevAnswers, choice]);
   };
 
-  const nextAnswerOptions = chatBotSteps[answers.length]?.answerOptions || [];
+  const nextAnswerOptions = chatBotCases[answers.length]?.answerOptions || [];
 
   return {
     nextAnswerOptions,

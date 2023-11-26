@@ -1,14 +1,14 @@
 import styled from '@emotion/native';
 import {Typography} from '../../../design-system/components/general/typography/Typography';
 import {Box} from '../../../design-system/components/layout/box/Box';
-import {ChatBotStep} from 'src/modules/chatbot/domain/types/ChatBotStep.interface';
+import {ChatBotCase} from 'src/modules/chatbot/domain/types/ChatBotCase.interface';
 
 const firstStepAnswerOptions = [
   'Yes, please !',
   'I am fine, I already have a meal',
 ];
 
-const firstStep: ChatBotStep = {
+const firstStep: ChatBotCase = {
   id: 'firstStep',
   paragraphs: [
     <Typography key={0}>{"Hi James 👋\nIt's almost lunch time!"}</Typography>,
@@ -52,7 +52,7 @@ const BulletParagraph = ({text}: {text: string}) => (
   </Box>
 );
 
-const secondtStep: ChatBotStep = {
+const secondtStep: ChatBotCase = {
   id: 'secondStep',
   paragraphs: [
     <Typography key={0}>
@@ -84,7 +84,7 @@ const ThirdStep = () => {
   return <Typography key={0}>{"Let's cook !"}</Typography>;
 };
 
-const thirdStep: ChatBotStep = {
+const thirdStep: ChatBotCase = {
   id: 'thirdStep',
   paragraphs: [<ThirdStep key={0} />],
   answerOptions: [],
@@ -93,4 +93,4 @@ const thirdStep: ChatBotStep = {
   },
 };
 
-export const chatBotSteps: ChatBotStep[] = [firstStep, secondtStep, thirdStep];
+export const chatBotCases: ChatBotCase[] = [firstStep, secondtStep, thirdStep];
