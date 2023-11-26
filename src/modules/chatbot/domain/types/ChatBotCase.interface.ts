@@ -5,5 +5,5 @@ export interface ChatBotCase {
   next: {
     condition?: (answer: string) => boolean;
     stepId: string | null;
-  };
+  }[];
 }

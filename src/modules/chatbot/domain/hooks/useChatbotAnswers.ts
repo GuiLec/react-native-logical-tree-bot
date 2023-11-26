@@ -34,7 +34,7 @@ export const useChatbotAnswers = ({
   );
   const answerOptions = currentChatBotCase?.answerOptions || [];
 
-  const nextChatBotCaseId = currentChatBotCase?.next.stepId || null;
+  const nextChatBotCaseId = currentChatBotCase?.next[0]?.stepId || null;
 
   return {
     answerOptions,

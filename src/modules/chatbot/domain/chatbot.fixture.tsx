@@ -19,9 +19,11 @@ const firstStep: ChatBotCase = {
     </Typography>,
   ],
   answerOptions: firstStepAnswerOptions,
-  next: {
-    stepId: 'thirdStep',
-  },
+  next: [
+    {
+      stepId: 'thirdStep',
+    },
+  ],
 };
 
 const secondStepAnswerOptions = [
@@ -75,9 +77,7 @@ const secondtStep: ChatBotCase = {
     <Typography key={3}>{'Does it sound good to you?'}</Typography>,
   ],
   answerOptions: secondStepAnswerOptions,
-  next: {
-    stepId: null,
-  },
+  next: [],
 };
 
 const ThirdStep = () => {
@@ -88,9 +88,11 @@ const thirdStep: ChatBotCase = {
   id: 'thirdStep',
   paragraphs: [<ThirdStep key={0} />],
   answerOptions: ['Hello'],
-  next: {
-    stepId: 'secondStep',
-  },
+  next: [
+    {
+      stepId: 'secondStep',
+    },
+  ],
 };
 
 export const chatBotCases: ChatBotCase[] = [firstStep, secondtStep, thirdStep];
