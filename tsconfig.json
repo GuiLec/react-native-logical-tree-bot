@@ -25,7 +25,8 @@
     "noImplicitAny": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "useUnknownInCatchVariables": true
+    "useUnknownInCatchVariables": true,
+    "baseUrl": "./"
   },
   "exclude": [
     "node_modules",
