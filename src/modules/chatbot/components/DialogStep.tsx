@@ -1,4 +1,4 @@
-import {ReactNode} from 'react';
+import React, {ReactNode} from 'react';
 import {Box} from '../../../design-system/components/layout/box/Box';
 import {BotMessage} from './BotMessage';
 import {Spacer} from '../../../design-system/components/layout/spacer/Spacer';
@@ -10,7 +10,11 @@ interface Props {
   showChoiceButtons: () => void;
 }
 
-export const DialogStep = ({answer, paragraphs, showChoiceButtons}: Props) => {
+const DialogStepToMemoize = ({
+  answer,
+  paragraphs,
+  showChoiceButtons,
+}: Props) => {
   return (
     <Box>
       <BotMessage
@@ -22,3 +26,5 @@ export const DialogStep = ({answer, paragraphs, showChoiceButtons}: Props) => {
     </Box>
   );
 };
+
+export const DialogStep = React.memo(DialogStepToMemoize);

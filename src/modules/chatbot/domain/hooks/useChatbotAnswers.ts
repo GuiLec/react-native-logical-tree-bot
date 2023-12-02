@@ -1,24 +1,45 @@
 import {useState} from 'react';
-import {ChatBotStep} from 'src/modules/chatbot/domain/types/ChatBotStep.interface';
-
-type Answer = string | null;
+import {ChatBotCase} from 'src/modules/chatbot/domain/types/ChatBotCase.interface';
+import {ChatStep} from 'src/modules/chatbot/domain/types/ChatStep.interface';
+import {getNextChatStepsState} from 'src/modules/chatbot/domain/utils/getNextChatStepsState';
 
 export const useChatbotAnswers = ({
-  chatBotSteps,
+  chatBotCases,
+  initialStepId,
 }: {
-  chatBotSteps: ChatBotStep[];
+  chatBotCases: ChatBotCase[];
+  initialStepId: string;
 }) => {
-  const [answers, setAnswers] = useState<Answer[]>([]);
+  const [chatSteps, setChatSteps] = useState<ChatStep[]>([
+    {
+      caseId: initialStepId,
+      answer: null,
+    },
+  ]);
 
-  const onAnswer = (choice: string) => {
-    setAnswers(prevAnswers => [...prevAnswers, choice]);
+  const onAnswer = ({
+    choice,
+    nextCaseId,
+  }: {
+    choice: string;
+    nextCaseId: string | null;
+  }) => {
+    setChatSteps(prevAnswers =>
+      getNextChatStepsState({prevAnswers, choice, nextCaseId}),
+    );
   };
 
-  const nextAnswerOptions = chatBotSteps[answers.length]?.answerOptions || [];
+  const currentChatBotCase = chatBotCases.find(
+    chatBotCase => chatBotCase.id === chatSteps[chatSteps.length - 1]?.caseId,
+  );
+  const answerOptions = currentChatBotCase?.answerOptions || [];
+
+  const nextEventualities = currentChatBotCase?.next || [];
 
   return {
-    nextAnswerOptions,
+    answerOptions,
     onAnswer,
-    answers,
+    chatSteps,
+    nextEventualities,
   };
 };

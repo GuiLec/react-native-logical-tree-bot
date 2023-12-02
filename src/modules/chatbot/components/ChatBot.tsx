@@ -5,18 +5,21 @@ import styled from '@emotion/native';
 import {useChatbotAnswers} from 'src/modules/chatbot/domain/hooks/useChatbotAnswers';
 import {Box} from 'src/design-system/components/layout/box/Box';
 import {Stack} from 'src/design-system/components/layout/stack/Stack';
-import {DialogStep} from 'src/modules/chatbot/components/DialogStep';
 import {ChatbotFooter} from 'src/modules/chatbot/components/ChatbotFooter';
-import {ChatBotStep} from 'src/modules/chatbot/domain/types/ChatBotStep.interface';
+import {ChatBotCase} from 'src/modules/chatbot/domain/types/ChatBotCase.interface';
+import {DialogStep} from 'src/modules/chatbot/components/DialogStep';
 
 interface Props {
-  chatBotSteps: ChatBotStep[];
+  chatBotCases: ChatBotCase[];
+  initialStepId: string;
 }
 
-export const Chatbot = ({chatBotSteps}: Props) => {
-  const {nextAnswerOptions, onAnswer, answers} = useChatbotAnswers({
-    chatBotSteps,
-  });
+export const Chatbot = ({chatBotCases, initialStepId}: Props) => {
+  const {answerOptions, onAnswer, chatSteps, nextEventualities} =
+    useChatbotAnswers({
+      chatBotCases,
+      initialStepId,
+    });
 
   const [areChoiceButtonsVisible, setAreChoiceButtonsVisible] =
     useState<boolean>(false);
@@ -24,10 +27,11 @@ export const Chatbot = ({chatBotSteps}: Props) => {
   const hideChoiceButtons = () => setAreChoiceButtonsVisible(false);
   const showChoiceButtons = () => setAreChoiceButtonsVisible(true);
 
-  const onChoicePress = (choice: string) => () => {
-    onAnswer(choice);
-    hideChoiceButtons();
-  };
+  const onChoicePress =
+    (params: {choice: string; nextCaseId: string | null}) => () => {
+      onAnswer(params);
+      hideChoiceButtons();
+    };
 
   const scrollViewRef = useRef<ScrollView>(null);
 
@@ -41,14 +45,17 @@ export const Chatbot = ({chatBotSteps}: Props) => {
         contentContainerStyle={styles.contentContainer}>
         <Box padding="$6">
           <Stack gap="$4">
-            {chatBotSteps.map((step, index) => {
-              if (index > answers.length) return null;
+            {chatSteps.map((step, index) => {
+              const chatBotCase = chatBotCases.find(
+                caseItem => caseItem.id === step.caseId,
+              );
+              if (!chatBotCase) return null;
               return (
                 <DialogStep
                   key={index}
                   showChoiceButtons={showChoiceButtons}
-                  paragraphs={step.paragraphs}
-                  answer={answers[index] || null}
+                  paragraphs={chatBotCase.paragraphs}
+                  answer={step.answer}
                 />
               );
             })}
@@ -58,7 +65,8 @@ export const Chatbot = ({chatBotSteps}: Props) => {
       <ChatbotFooter
         areChoiceButtonsVisible={areChoiceButtonsVisible}
         onChoicePress={onChoicePress}
-        answerOptions={nextAnswerOptions}
+        answerOptions={answerOptions}
+        nextEventualities={nextEventualities}
       />
     </StyledSafeAreaView>
   );
