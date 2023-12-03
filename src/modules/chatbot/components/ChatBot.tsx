@@ -1,6 +1,5 @@
 import React, {useRef, useState} from 'react';
-import {ScrollView, StyleSheet, SafeAreaView} from 'react-native';
-import styled from '@emotion/native';
+import {ScrollView, StyleSheet} from 'react-native';
 import {useChatbotAnswers} from 'src/modules/chatbot/domain/hooks/useChatbotAnswers';
 import {Box} from 'src/design-system/components/layout/box/Box';
 import {Stack} from 'src/design-system/components/layout/stack/Stack';
@@ -8,6 +7,8 @@ import {ChatbotFooter} from 'src/modules/chatbot/components/ChatbotFooter';
 import {DialogStep} from 'src/modules/chatbot/components/DialogStep';
 import {Case, CaseProps} from 'src/modules/chatbot/components/Case';
 import {getChatBotCasesFromCaseProps} from 'src/modules/chatbot/domain/utils/getChatBotCasesFromCaseProps';
+import {ThemeProvider} from '@emotion/react';
+import {theme} from 'src/design-system/theme/theme';
 
 interface Props {
   children: React.ReactElement<CaseProps> | React.ReactElement<CaseProps>[];
@@ -38,7 +39,7 @@ export const Chatbot = ({children, initialStepId}: Props) => {
   const scrollViewRef = useRef<ScrollView>(null);
 
   return (
-    <StyledSafeAreaView>
+    <ThemeProvider theme={theme}>
       <ScrollView
         ref={scrollViewRef}
         onContentSizeChange={
@@ -70,17 +71,12 @@ export const Chatbot = ({children, initialStepId}: Props) => {
         answerOptions={answerOptions}
         nextEventualities={nextEventualities}
       />
-    </StyledSafeAreaView>
+    </ThemeProvider>
   );
 };
 
 const styles = StyleSheet.create({
   contentContainer: {flexGrow: 1},
-});
-
-const StyledSafeAreaView = styled(SafeAreaView)({
-  flex: 1,
-  backgroundColor: 'white',
 });
 
 Chatbot.Case = Case;
