@@ -1,19 +1,25 @@
-import {useRef, useState} from 'react';
+import React, {useRef, useState} from 'react';
 import {ScrollView, StyleSheet, SafeAreaView} from 'react-native';
 import styled from '@emotion/native';
 import {useChatbotAnswers} from 'src/modules/chatbot/domain/hooks/useChatbotAnswers';
 import {Box} from 'src/design-system/components/layout/box/Box';
 import {Stack} from 'src/design-system/components/layout/stack/Stack';
 import {ChatbotFooter} from 'src/modules/chatbot/components/ChatbotFooter';
-import {ChatBotCase} from 'src/modules/chatbot/domain/types/ChatBotCase.interface';
 import {DialogStep} from 'src/modules/chatbot/components/DialogStep';
 
 interface Props {
-  chatBotCases: ChatBotCase[];
+  children: React.ReactNode;
   initialStepId: string;
 }
 
-export const Chatbot = ({chatBotCases, initialStepId}: Props) => {
+export const Chatbot = ({children, initialStepId}: Props) => {
+  const chatBotCases =
+    React.Children.map(children, child => {
+      if (React.isValidElement(child)) {
+        return child.props;
+      }
+    }) || [];
+
   const {answerOptions, onAnswer, chatSteps, nextEventualities} =
     useChatbotAnswers({
       chatBotCases,
