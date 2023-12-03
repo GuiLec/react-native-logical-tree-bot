@@ -2,7 +2,7 @@ import styled from '@emotion/native';
 import {SafeAreaView} from 'react-native';
 import {Typography} from 'src/design-system/components/general/typography/Typography';
 import {Box} from 'src/design-system/components/layout/box/Box';
-import {Chatbot} from 'src/modules/chatbot/components/ChatBot';
+import {Chatbot} from 'src/modules/chatbot/components/ChatBot/ChatBot';
 
 export const Demo = () => {
   return (

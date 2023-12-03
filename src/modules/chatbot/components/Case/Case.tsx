@@ -2,7 +2,7 @@ import {Eventuality} from 'src/modules/chatbot/domain/types/ChatBotCase.interfac
 import {
   Paragraph,
   ParagraphProps,
-} from 'src/modules/chatbot/components/Paragraph';
+} from 'src/modules/chatbot/components/Paragraph/Paragraph';
 
 export type CaseProps = {
   id: string;

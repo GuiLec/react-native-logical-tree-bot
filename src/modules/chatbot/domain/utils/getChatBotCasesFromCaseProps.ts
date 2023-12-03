@@ -1,5 +1,5 @@
 import React from 'react';
-import {CaseProps} from 'src/modules/chatbot/components/Case';
+import {CaseProps} from 'src/modules/chatbot/components/Case/Case';
 import {ChatBotCase} from 'src/modules/chatbot/domain/types/ChatBotCase.interface';
 
 export const getChatBotCasesFromCaseProps = ({
