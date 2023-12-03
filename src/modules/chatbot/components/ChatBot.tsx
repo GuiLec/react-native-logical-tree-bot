@@ -6,19 +6,15 @@ import {Box} from 'src/design-system/components/layout/box/Box';
 import {Stack} from 'src/design-system/components/layout/stack/Stack';
 import {ChatbotFooter} from 'src/modules/chatbot/components/ChatbotFooter';
 import {DialogStep} from 'src/modules/chatbot/components/DialogStep';
+import {Case, CaseProps} from 'src/modules/chatbot/components/Case';
 
 interface Props {
-  children: React.ReactNode;
+  children: React.ReactElement<CaseProps> | React.ReactElement<CaseProps>[];
   initialStepId: string;
 }
 
 export const Chatbot = ({children, initialStepId}: Props) => {
-  const chatBotCases =
-    React.Children.map(children, child => {
-      if (React.isValidElement(child)) {
-        return child.props;
-      }
-    }) || [];
+  const chatBotCases = React.Children.map(children, child => child.props);
 
   const {answerOptions, onAnswer, chatSteps, nextEventualities} =
     useChatbotAnswers({
@@ -85,3 +81,5 @@ const StyledSafeAreaView = styled(SafeAreaView)({
   flex: 1,
   backgroundColor: 'white',
 });
+
+Chatbot.Case = Case;
