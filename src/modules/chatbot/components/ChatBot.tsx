@@ -1,6 +1,5 @@
 import {useRef, useState} from 'react';
-import {ScrollView, StyleSheet} from 'react-native';
-import {SafeAreaView} from 'react-native';
+import {ScrollView, StyleSheet, SafeAreaView} from 'react-native';
 import styled from '@emotion/native';
 import {useChatbotAnswers} from 'src/modules/chatbot/domain/hooks/useChatbotAnswers';
 import {Box} from 'src/design-system/components/layout/box/Box';
