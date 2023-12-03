@@ -7,6 +7,7 @@ import {Stack} from 'src/design-system/components/layout/stack/Stack';
 import {ChatbotFooter} from 'src/modules/chatbot/components/ChatbotFooter';
 import {DialogStep} from 'src/modules/chatbot/components/DialogStep';
 import {Case, CaseProps} from 'src/modules/chatbot/components/Case';
+import {getChatBotCasesFromCaseProps} from 'src/modules/chatbot/domain/utils/getChatBotCasesFromCaseProps';
 
 interface Props {
   children: React.ReactElement<CaseProps> | React.ReactElement<CaseProps>[];
@@ -14,7 +15,7 @@ interface Props {
 }
 
 export const Chatbot = ({children, initialStepId}: Props) => {
-  const chatBotCases = React.Children.map(children, child => child.props);
+  const chatBotCases = getChatBotCasesFromCaseProps({children});
 
   const {answerOptions, onAnswer, chatSteps, nextEventualities} =
     useChatbotAnswers({
