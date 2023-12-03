@@ -5,7 +5,6 @@ import {Typography} from 'src/design-system/components/general/typography/Typogr
 import {Box} from 'src/design-system/components/layout/box/Box';
 import {theme} from 'src/design-system/theme/theme';
 import {Chatbot} from 'src/modules/chatbot/components/ChatBot';
-import {Paragraph} from 'src/modules/chatbot/components/Paragraph';
 
 export const Demo = () => {
   return (
@@ -27,16 +26,16 @@ export const Demo = () => {
                 stepId: 'secondStep',
               },
             ]}>
-            <Paragraph>
+            <Chatbot.Case.Paragraph>
               <Typography>{"Hi James 👋\nIt's almost lunch time!"}</Typography>
-            </Paragraph>
-            <Paragraph>
+            </Chatbot.Case.Paragraph>
+            <Chatbot.Case.Paragraph>
               <Typography>
                 {
                   'May I suggest you a meal you can cook respecting your 1800 kcal daily goal?'
                 }
               </Typography>
-            </Paragraph>
+            </Chatbot.Case.Paragraph>
           </Chatbot.Case>
           <Chatbot.Case
             id="secondStep"
@@ -46,22 +45,22 @@ export const Demo = () => {
               'I don’t have all the ingredients',
             ]}
             next={[]}>
-            <Paragraph>
+            <Chatbot.Case.Paragraph>
               <Typography>
                 {
                   "Ah, a delightful culinary challenge! Let's create a satisfying and nutritious meal that's around 400 calories!"
                 }
               </Typography>
-            </Paragraph>
-            <Paragraph>
+            </Chatbot.Case.Paragraph>
+            <Chatbot.Case.Paragraph>
               <Typography>
                 {'I suggest: a Light Veggie and Egg Salad !'}
               </Typography>
-            </Paragraph>
-            <Paragraph>
+            </Chatbot.Case.Paragraph>
+            <Chatbot.Case.Paragraph>
               <Typography>{"That's the ingredients list:"}</Typography>
-            </Paragraph>
-            <Paragraph>
+            </Chatbot.Case.Paragraph>
+            <Chatbot.Case.Paragraph>
               <Box>
                 <BulletParagraph text="Eggs" />
                 <BulletParagraph text="Avocado (for healthy fats and creaminess)" />
@@ -70,10 +69,10 @@ export const Demo = () => {
                 <BulletParagraph text="Mayonnaise (we'll use a small amount for creaminess)" />
                 <BulletParagraph text="Olive oil (for the dressing)" />
               </Box>
-            </Paragraph>
-            <Paragraph>
+            </Chatbot.Case.Paragraph>
+            <Chatbot.Case.Paragraph>
               <Typography>{'Does it sound good to you?'}</Typography>
-            </Paragraph>
+            </Chatbot.Case.Paragraph>
           </Chatbot.Case>
           <Chatbot.Case
             id="thirdStep"
@@ -83,9 +82,9 @@ export const Demo = () => {
                 stepId: 'secondStep',
               },
             ]}>
-            <Paragraph>
+            <Chatbot.Case.Paragraph>
               <Typography>{"Let's cook !"}</Typography>
-            </Paragraph>
+            </Chatbot.Case.Paragraph>
           </Chatbot.Case>
         </Chatbot>
       </StyledSafeAreaView>

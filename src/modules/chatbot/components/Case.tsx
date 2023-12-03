@@ -1,5 +1,8 @@
-import {ParagraphProps} from 'src/modules/chatbot/components/Paragraph';
 import {Eventuality} from 'src/modules/chatbot/domain/types/ChatBotCase.interface';
+import {
+  Paragraph,
+  ParagraphProps,
+} from 'src/modules/chatbot/components/Paragraph';
 
 export type CaseProps = {
   id: string;
@@ -14,3 +17,5 @@ export type CaseProps = {
 export const Case = (_: CaseProps) => {
   return null;
 };
+
+Case.Paragraph = Paragraph;
