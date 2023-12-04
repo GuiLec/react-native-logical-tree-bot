@@ -49,6 +49,7 @@ Explore a new realm of user interaction and engagement with React-native-logical
             <Text>Chose B</Text>
           </Chatbot.Case.Paragraph>
         </Chatbot.Case>
+
       </Chatbot>
 ```
 
