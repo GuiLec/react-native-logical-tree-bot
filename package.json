@@ -1,7 +1,9 @@
 {
-  "name": "RNLogicalTreeBot",
+  "name": "react-native-logical-tree-bot",
+  "main": "lib/index.ts",
   "version": "0.0.1",
   "private": true,
+  "author": "GuiLec",
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
