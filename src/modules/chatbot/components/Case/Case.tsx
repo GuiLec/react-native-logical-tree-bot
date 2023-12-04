@@ -1,4 +1,7 @@
-import {Eventuality} from 'src/modules/chatbot/domain/types/ChatBotCase.interface';
+import {
+  ChatBotCase,
+  Eventuality,
+} from 'src/modules/chatbot/domain/types/ChatBotCase.interface';
 import {
   Paragraph,
   ParagraphProps,
@@ -12,13 +15,13 @@ export type CaseProps = {
     | React.ReactElement<ParagraphProps>
     | React.ReactElement<ParagraphProps>[];
   answerOptions: string[];
-  next: Eventuality[];
+  next?: Eventuality[];
 };
 
 export const Case = (props: CaseProps) => {
   const setChatbotCaseContext = useSetChatbotCaseContext();
   useEffect(() => {
-    setChatbotCaseContext(cases => [
+    setChatbotCaseContext((cases: ChatBotCase[]) => [
       ...cases,
       {
         id: props.id,

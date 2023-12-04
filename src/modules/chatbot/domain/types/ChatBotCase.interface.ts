@@ -2,7 +2,7 @@ export interface ChatBotCase {
   id: string;
   paragraphs: React.JSX.Element[];
   answerOptions: string[];
-  next: Eventuality[];
+  next?: Eventuality[];
 }
 
 export interface Eventuality {
