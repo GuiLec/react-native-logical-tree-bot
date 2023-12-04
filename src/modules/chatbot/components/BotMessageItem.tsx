@@ -22,7 +22,10 @@ export const BotMessageItem = ({
   if (isMessageDisplayed) {
     return (
       <Box>
-        <RoundedBox backgroundColorKeyPath="primary.veryPale" padding="$2">
+        <RoundedBox
+          alignSelf="baseline"
+          backgroundColorKeyPath="primary.veryPale"
+          padding="$2">
           {children}
         </RoundedBox>
         <Spacer direction="vertical" gap="$2" />
