@@ -6,7 +6,7 @@ export const GoodGoForDrinkCase = () => {
   return (
     <Chatbot.Case
       id={Ids.good_go_for_drink}
-      answerOptions={['Gulp, gulp']}
+      clickableAnswerOptions={['Gulp, gulp']}
       next={[
         {
           stepId: Ids.try_rn_logical_tree_bot,

@@ -9,7 +9,7 @@ export const Basic = () => {
         {/* Initial case */}
         <Chatbot.Case
           next={[{stepId: 'caseA', condition: /a/i}, {stepId: 'caseB'}]}
-          answerOptions={['A', 'B']}
+          clickableAnswerOptions={['A', 'B']}
           id="init">
           <Chatbot.Case.Paragraph>
             <Text>First pagraph</Text>

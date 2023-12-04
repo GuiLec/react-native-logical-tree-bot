@@ -7,7 +7,7 @@ import {Box} from 'src/design-system/components/layout/box/Box';
 
 export const GoodbyeCase = () => {
   return (
-    <Chatbot.Case id={Ids.goodbye} answerOptions={[]} next={[]}>
+    <Chatbot.Case id={Ids.goodbye} clickableAnswerOptions={[]} next={[]}>
       <Chatbot.Case.Paragraph>
         <Typography>{'Alright, have a good day then!'}</Typography>
       </Chatbot.Case.Paragraph>

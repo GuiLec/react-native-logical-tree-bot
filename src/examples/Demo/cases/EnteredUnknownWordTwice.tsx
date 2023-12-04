@@ -6,7 +6,7 @@ export const EnteredUnknownWordTwice = () => {
   return (
     <Chatbot.Case
       id={Ids.entered_unknown_word_twice}
-      answerOptions={['Yes', 'No']}
+      clickableAnswerOptions={['Yes', 'No']}
       next={[
         {
           stepId: Ids.not_a_question,

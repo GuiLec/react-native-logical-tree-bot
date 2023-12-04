@@ -6,7 +6,7 @@ export const AndCanReadNoCase = () => {
   return (
     <Chatbot.Case
       id={Ids.and_can_read_no}
-      answerOptions={['Yes', 'No']}
+      clickableAnswerOptions={['Yes', 'No']}
       next={[
         {
           condition: /no/i,

@@ -6,7 +6,7 @@ export const TryRNLogicalTreeBotCase = () => {
   return (
     <Chatbot.Case
       id={Ids.try_rn_logical_tree_bot}
-      answerOptions={['Sure!']}
+      clickableAnswerOptions={['Sure!']}
       next={[
         {
           stepId: Ids.intro,

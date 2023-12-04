@@ -6,7 +6,7 @@ export const IntroCase = () => {
   return (
     <Chatbot.Case
       id={Ids.intro}
-      answerOptions={['Tell me about decision trees', 'I am fine']}
+      clickableAnswerOptions={['Tell me about decision trees', 'I am fine']}
       next={[
         {
           condition: /decision tree/i,

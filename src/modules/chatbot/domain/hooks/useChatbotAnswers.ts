@@ -32,12 +32,12 @@ export const useChatbotAnswers = ({
   const currentChatBotCase = chatBotCases.find(
     chatBotCase => chatBotCase.id === chatSteps[chatSteps.length - 1]?.caseId,
   );
-  const answerOptions = currentChatBotCase?.answerOptions || [];
+  const clickableAnswerOptions = currentChatBotCase?.clickableAnswerOptions || [];
 
   const nextEventualities = currentChatBotCase?.next || [];
 
   return {
-    answerOptions,
+    clickableAnswerOptions,
     onAnswer,
     chatSteps,
     nextEventualities,
