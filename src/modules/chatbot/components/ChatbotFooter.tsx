@@ -12,6 +12,7 @@ import {Box} from '../../../design-system/components/layout/box/Box';
 import {theme} from '../../../design-system/theme/theme';
 import {Eventuality} from 'src/modules/chatbot/domain/types/ChatBotCase.interface';
 import {getNextCaseIdFromEventualities} from 'src/modules/chatbot/domain/utils/getNextCaseIdFromEventualities';
+import {useState} from 'react';
 
 interface Props {
   answerOptions: string[];
@@ -29,6 +30,25 @@ export const ChatbotFooter = ({
   areChoiceButtonsVisible,
   nextEventualities,
 }: Props) => {
+  const [inputText, setInputText] = useState<string | undefined>(undefined);
+  const onInputChange = (text: string) => setInputText(text);
+
+  const onChoseOption = (answer: string) =>
+    onChoicePress({
+      choice: answer,
+      nextCaseId: getNextCaseIdFromEventualities({
+        eventualities: nextEventualities,
+        choice: answer,
+      }),
+    });
+
+  const onSendButtonPress = () => {
+    if (inputText) {
+      onChoseOption(inputText)();
+      setInputText(undefined);
+    }
+  };
+
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
@@ -45,13 +65,7 @@ export const ChatbotFooter = ({
               <Stack direction="horizontal" gap="$4">
                 {answerOptions.map((answerOption, index) => (
                   <Button
-                    onPress={onChoicePress({
-                      choice: answerOption,
-                      nextCaseId: getNextCaseIdFromEventualities({
-                        eventualities: nextEventualities,
-                        choice: answerOption,
-                      }),
-                    })}
+                    onPress={onChoseOption(answerOption)}
                     key={index}
                     variant="inverted"
                     size="XS"
@@ -64,9 +78,18 @@ export const ChatbotFooter = ({
           </>
         )}
         <Box alignItems="center" direction="horizontal" paddingHorizontal="$6">
-          <TextInput placeholder="Ask me something..." />
+          <TextInput
+            onChangeText={onInputChange}
+            value={inputText}
+            placeholder="Ask me something..."
+          />
           <Spacer direction="horizontal" gap="$2" />
-          <Button size="XXS" icon="sendHorizontal" />
+          <Button
+            onPress={onSendButtonPress}
+            isDisabled={!inputText}
+            size="XXS"
+            icon="sendHorizontal"
+          />
         </Box>
       </Box>
     </KeyboardAvoidingView>
