@@ -4,7 +4,7 @@ import {Chatbot} from 'src/modules/chatbot/components/ChatBot/ChatBot';
 
 export const HateYouCase = () => {
   return (
-    <Chatbot.Case id={Ids.hate_you} answerOptions={[]} next={[]}>
+    <Chatbot.Case id={Ids.hate_you} clickableAnswerOptions={[]} next={[]}>
       <Chatbot.Case.Paragraph>
         <Typography>{'Listen...'}</Typography>
       </Chatbot.Case.Paragraph>

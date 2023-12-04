@@ -6,7 +6,7 @@ export const NotAQuestionCase = () => {
   return (
     <Chatbot.Case
       id={Ids.not_a_question}
-      answerOptions={['Gulp, gulp']}
+      clickableAnswerOptions={['Gulp, gulp']}
       next={[
         {
           stepId: Ids.try_rn_logical_tree_bot,

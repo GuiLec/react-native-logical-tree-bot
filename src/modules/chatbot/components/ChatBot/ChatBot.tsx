@@ -19,7 +19,7 @@ interface Props {
 export const Chatbot = ({initialStepId, children}: Props) => {
   const [chatBotCases, setChatBotCases] = useState<ChatBotCase[]>([]);
 
-  const {answerOptions, onAnswer, chatSteps, nextEventualities} =
+  const {clickableAnswerOptions, onAnswer, chatSteps, nextEventualities} =
     useChatbotAnswers({
       chatBotCases,
       initialStepId,
@@ -71,7 +71,7 @@ export const Chatbot = ({initialStepId, children}: Props) => {
         <ChatbotFooter
           areChoiceButtonsVisible={areChoiceButtonsVisible}
           onChoicePress={onChoicePress}
-          answerOptions={answerOptions}
+          clickableAnswerOptions={clickableAnswerOptions}
           nextEventualities={nextEventualities}
         />
       </ThemeProvider>

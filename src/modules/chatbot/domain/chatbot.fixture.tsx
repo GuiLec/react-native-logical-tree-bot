@@ -18,7 +18,7 @@ const firstStep: ChatBotCase = {
       }
     </Typography>,
   ],
-  answerOptions: firstStepAnswerOptions,
+  clickableAnswerOptions: firstStepAnswerOptions,
   next: [
     {
       condition: /Yes/,
@@ -80,7 +80,7 @@ const secondtStep: ChatBotCase = {
     </Box>,
     <Typography key={3}>{'Does it sound good to you?'}</Typography>,
   ],
-  answerOptions: secondStepAnswerOptions,
+  clickableAnswerOptions: secondStepAnswerOptions,
   next: [],
 };
 
@@ -91,7 +91,7 @@ const ThirdStep = () => {
 const thirdStep: ChatBotCase = {
   id: 'thirdStep',
   paragraphs: [<ThirdStep key={0} />],
-  answerOptions: ['Hello'],
+  clickableAnswerOptions: ['Hello'],
   next: [
     {
       stepId: 'secondStep',

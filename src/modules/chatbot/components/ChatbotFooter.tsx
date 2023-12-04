@@ -15,7 +15,7 @@ import {getNextCaseIdFromEventualities} from 'src/modules/chatbot/domain/utils/g
 import {useState} from 'react';
 
 interface Props {
-  answerOptions: string[];
+  clickableAnswerOptions: string[];
   onChoicePress: (params: {
     choice: string;
     nextCaseId: string | null;
@@ -25,7 +25,7 @@ interface Props {
 }
 
 export const ChatbotFooter = ({
-  answerOptions,
+  clickableAnswerOptions,
   onChoicePress,
   areChoiceButtonsVisible,
   nextEventualities,
@@ -56,14 +56,14 @@ export const ChatbotFooter = ({
         paddingBottom="$2"
         backgroundColorKeyPath="primary.veryPale"
         paddingTop="$4">
-        {areChoiceButtonsVisible && answerOptions.length > 0 && (
+        {areChoiceButtonsVisible && clickableAnswerOptions.length > 0 && (
           <>
             <ScrollView
               horizontal
               showsHorizontalScrollIndicator={false}
               contentContainerStyle={styles.contentContainer}>
               <Stack direction="horizontal" gap="$4">
-                {answerOptions.map((answerOption, index) => (
+                {clickableAnswerOptions.map((answerOption, index) => (
                   <Button
                     onPress={onChoseOption(answerOption)}
                     key={index}

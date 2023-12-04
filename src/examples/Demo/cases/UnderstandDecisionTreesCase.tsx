@@ -6,7 +6,7 @@ export const UnderstandDecisionTreesCase = () => {
   return (
     <Chatbot.Case
       id={Ids.understand_decision_trees}
-      answerOptions={['Yes', 'No', 'A little bit']}
+      clickableAnswerOptions={['Yes', 'No', 'A little bit']}
       next={[
         {
           condition: /yes/i,
