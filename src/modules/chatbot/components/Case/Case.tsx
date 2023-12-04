@@ -14,7 +14,7 @@ export type CaseProps = {
   children:
     | React.ReactElement<ParagraphProps>
     | React.ReactElement<ParagraphProps>[];
-  answerOptions: string[];
+  answerOptions?: string[];
   next?: Eventuality[];
 };
 
