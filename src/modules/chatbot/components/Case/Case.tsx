@@ -1,13 +1,10 @@
-import {
-  ChatBotCase,
-  Eventuality,
-} from 'src/modules/chatbot/domain/types/ChatBotCase.interface';
-import {
-  Paragraph,
-  ParagraphProps,
-} from 'src/modules/chatbot/components/Paragraph/Paragraph';
 import React, {useEffect} from 'react';
-import {useSetChatbotCaseContext} from 'src/modules/chatbot/domain/context/ChatbotCaseContext';
+import {useSetChatbotCaseContext} from '../../domain/context/ChatbotCaseContext';
+import {
+  Eventuality,
+  ChatBotCase,
+} from '../../domain/types/ChatBotCase.interface';
+import {ParagraphProps, Paragraph} from '../Paragraph/Paragraph';
 
 export type CaseProps = {
   id: string;

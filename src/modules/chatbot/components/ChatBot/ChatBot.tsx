@@ -1,15 +1,15 @@
+import {ThemeProvider} from '@emotion/react';
 import React, {useRef, useState} from 'react';
 import {ScrollView, StyleSheet} from 'react-native';
-import {useChatbotAnswers} from 'src/modules/chatbot/domain/hooks/useChatbotAnswers';
-import {Box} from 'src/design-system/components/layout/box/Box';
-import {Stack} from 'src/design-system/components/layout/stack/Stack';
-import {ChatbotFooter} from 'src/modules/chatbot/components/ChatbotFooter';
-import {DialogStep} from 'src/modules/chatbot/components/DialogStep';
-import {Case, CaseProps} from 'src/modules/chatbot/components/Case/Case';
-import {ThemeProvider} from '@emotion/react';
-import {theme} from 'src/design-system/theme/theme';
-import {ChatBotCase} from 'src/modules/chatbot/domain/types/ChatBotCase.interface';
-import {ChatbotCaseContextProvider} from 'src/modules/chatbot/domain/context/ChatbotCaseContext';
+import {Stack} from '../../../../design-system/components/layout/stack/Stack';
+import {theme} from '../../../../design-system/theme/theme';
+import {ChatbotCaseContextProvider} from '../../domain/context/ChatbotCaseContext';
+import {useChatbotAnswers} from '../../domain/hooks/useChatbotAnswers';
+import {ChatBotCase} from '../../domain/types/ChatBotCase.interface';
+import {CaseProps, Case} from '../Case/Case';
+import {ChatbotFooter} from '../ChatbotFooter';
+import {DialogStep} from '../DialogStep';
+import {Box} from '../../../../design-system/components/layout/box/Box';
 
 interface Props {
   children: React.ReactElement<CaseProps> | React.ReactElement<CaseProps>[];
