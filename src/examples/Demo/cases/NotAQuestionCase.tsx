@@ -1,6 +1,6 @@
-import {Typography} from 'src/design-system/components/general/typography/Typography';
-import {Ids} from 'src/examples/Demo/cases/ids';
-import {Chatbot} from 'src/modules/chatbot/components/ChatBot/ChatBot';
+import Chatbot from '../../../../lib';
+import {Typography} from '../../../design-system/components/general/typography/Typography';
+import {Ids} from './ids';
 
 export const NotAQuestionCase = () => {
   return (

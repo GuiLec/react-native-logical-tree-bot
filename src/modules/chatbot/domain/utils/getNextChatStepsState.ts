@@ -1,4 +1,4 @@
-import {ChatStep} from 'src/modules/chatbot/domain/types/ChatStep.interface';
+import {ChatStep} from '../types/ChatStep.interface';
 
 export const getNextChatStepsState = ({
   prevAnswers,

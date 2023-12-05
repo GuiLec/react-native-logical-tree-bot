@@ -1,9 +1,9 @@
 import {Image, StyleSheet} from 'react-native';
-import {Typography} from 'src/design-system/components/general/typography/Typography';
-import {Ids} from 'src/examples/Demo/cases/ids';
-import {Chatbot} from 'src/modules/chatbot/components/ChatBot/ChatBot';
-import goodbyeImage from 'src/examples/Demo/assets/goodbye.png';
-import {Box} from 'src/design-system/components/layout/box/Box';
+import Chatbot from '../../../../lib';
+import {Typography} from '../../../design-system/components/general/typography/Typography';
+import {Ids} from './ids';
+import {Box} from '../../../design-system/components/layout/box/Box';
+import goodbyeImage from '../assets/goodbye.png';
 
 export const GoodbyeCase = () => {
   return (

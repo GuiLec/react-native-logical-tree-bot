@@ -4,10 +4,10 @@ import styled from '@emotion/native';
 import {type ReactNode} from 'react';
 import {View} from 'react-native';
 import {Theme} from '@emotion/react';
-import {ColorKeyPaths} from 'src/design-system/theme/colors';
-import {getColorWithKey} from 'src/design-system/styling-helpers/getColorWithKey';
-import {SizesKeyPaths} from 'src/design-system/theme/sizes';
-import {getSizeWithKey} from 'src/design-system/styling-helpers/getSizeWithKey';
+import {ColorKeyPaths} from '../../../theme/colors';
+import {SizesKeyPaths} from '../../../theme/sizes';
+import {getColorWithKey} from '../../../styling-helpers/getColorWithKey';
+import {getSizeWithKey} from '../../../styling-helpers/getSizeWithKey';
 
 type BoxDirection = 'vertical' | 'horizontal';
 

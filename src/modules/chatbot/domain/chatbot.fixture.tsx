@@ -1,7 +1,7 @@
 import styled from '@emotion/native';
 import {Typography} from '../../../design-system/components/general/typography/Typography';
 import {Box} from '../../../design-system/components/layout/box/Box';
-import {ChatBotCase} from 'src/modules/chatbot/domain/types/ChatBotCase.interface';
+import {ChatBotCase} from './types/ChatBotCase.interface';
 
 const firstStepAnswerOptions = [
   'Yes, please !',

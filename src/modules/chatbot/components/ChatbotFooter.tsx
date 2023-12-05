@@ -10,9 +10,10 @@ import {Button} from '../../../design-system/components/general/button/Button';
 import {Spacer} from '../../../design-system/components/layout/spacer/Spacer';
 import {Box} from '../../../design-system/components/layout/box/Box';
 import {theme} from '../../../design-system/theme/theme';
-import {Eventuality} from 'src/modules/chatbot/domain/types/ChatBotCase.interface';
-import {getNextCaseIdFromEventualities} from 'src/modules/chatbot/domain/utils/getNextCaseIdFromEventualities';
+
 import {useState} from 'react';
+import {Eventuality} from '../domain/types/ChatBotCase.interface';
+import {getNextCaseIdFromEventualities} from '../domain/utils/getNextCaseIdFromEventualities';
 
 interface Props {
   clickableAnswerOptions: string[];

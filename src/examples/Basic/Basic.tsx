@@ -1,6 +1,6 @@
 import styled from '@emotion/native';
 import {SafeAreaView, Text} from 'react-native';
-import {Chatbot} from 'src/modules/chatbot/components/ChatBot/ChatBot';
+import Chatbot from '../../../lib';
 
 export const Basic = () => {
   return (

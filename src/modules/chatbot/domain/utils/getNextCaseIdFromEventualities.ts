@@ -1,4 +1,4 @@
-import {Eventuality} from 'src/modules/chatbot/domain/types/ChatBotCase.interface';
+import {Eventuality} from '../types/ChatBotCase.interface';
 
 export const getNextCaseIdFromEventualities = ({
   eventualities,
